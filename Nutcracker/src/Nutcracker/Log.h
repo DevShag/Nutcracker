@@ -22,3 +22,18 @@ namespace Nutcracker {
 
 }
 
+//Core log macros
+#define NC_CORE_TRACE(...)		::Nutcracker::Log::GetCoreLogger()->trace(__VA_ARGS__);
+#define NC_CORE_INFO(...)		::Nutcracker::Log::GetCoreLogger()->info(__VA_ARGS__);
+#define NC_CORE_WARN(...)		::Nutcracker::Log::GetCoreLogger()->warn(__VA_ARGS__);
+//#define NC_CORE_FATAL(...)	::Nutcracker::Log::GetCoreLogger()->fata(__VA_ARGS__);
+
+
+//Client log macros
+#define NC_TRACE(...)		::Nutcracker::Log::GetClientLogger()->trace(__VA_ARGS__);
+#define NC_INFO(...)		::Nutcracker::Log::GetClientLogger()->info(__VA_ARGS__);
+#define NC_WARN(...)		::Nutcracker::Log::GetClientLogger()->warn(__VA_ARGS__);
+//#define NC_FATAL(...)	::Nutcracker::Log::GetCoreLogger()->fata(__VA_ARGS__);
+
+
+
