@@ -12,6 +12,6 @@ public:
 	}
 };
 
-Nutcracker::Application* CreateApplication() {
+Nutcracker::Application* Nutcracker::CreateApplication() {
 	return new Sandbox();
 }
