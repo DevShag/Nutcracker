@@ -19,6 +19,13 @@
     <ClInclude Include="src\Nutcracker\Log.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\Nutcracker\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Nutcracker\Events\Event.h">
+      <Filter>Nutcracker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Events\KeyEvent.h" />
+    <ClInclude Include="src\Nutcracker\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp">
@@ -27,5 +34,8 @@
     <ClCompile Include="src\Nutcracker\Log.cpp">
       <Filter>Nutcracker</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Nutcracker.rc" />
   </ItemGroup>
 </Project>

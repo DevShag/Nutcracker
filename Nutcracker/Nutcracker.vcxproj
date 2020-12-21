@@ -144,15 +144,23 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Nutcracker.h" />
     <ClInclude Include="src\Nutcracker\Application.h" />
     <ClInclude Include="src\Nutcracker\Core.h" />
     <ClInclude Include="src\Nutcracker\EntryPoint.h" />
+    <ClInclude Include="src\Nutcracker\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Nutcracker\Events\Event.h" />
+    <ClInclude Include="src\Nutcracker\Events\KeyEvent.h" />
+    <ClInclude Include="src\Nutcracker\Events\MouseEvent.h" />
     <ClInclude Include="src\Nutcracker\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp" />
     <ClCompile Include="src\Nutcracker\Log.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Nutcracker.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
