@@ -27,6 +27,7 @@ project "Nutcracker"
 
 	includedirs
 	{
+		"$(ProjectDir)src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

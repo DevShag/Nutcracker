@@ -1,11 +1,13 @@
 #pragma once
 
 #pragma once
-#include "../Core.h"
+#include "Nutcracker/Core.h"
 #include <string>
 #include <functional>
 
-namespace Nucracker {
+//$(ProjectDir)src
+
+namespace Nutcracker {
 
 	// Events in Nutcracker are currently blocking, meaning when an event occurs it
 	// immediately gets dispatched and must be dealt with right then an there.
@@ -48,6 +50,14 @@ namespace Nucracker {
 
 	};
 
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
+								virtual EventType GetEventType() const override { return GetStaticType(); }\
+								virtual const char* GetName() const override { return #type; }
+
+
+#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
+
+
 	class NUTCRACKER_API Event {
 		
 		friend class EventDispature;
@@ -67,5 +77,29 @@ namespace Nucracker {
 		bool m_Handled = false;
 
 	};
+
+	class EventDispatcher
+	{
+		template<typename T>
+		using EventFn = std::function<bool(T&)>;
+
+	public:
+		EventDispatcher(Event& event):m_Event(event){}
+		
+		template<typename T>
+		bool Dispatch(EventFn<T> func) {
+			if (m_Event.GetEventType() == T::GetStaticType()) {
+				m_Event.m_Handled = func(*(T*)&m_Event);
+				return true;
+			}
+		}
+
+	private:
+		Event& m_Event;
+	};
+
+	inline std::ostream& operator<<(std::ostream& os, const Event& e) {
+		return os << e.ToString();
+	}
 }
 

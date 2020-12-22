@@ -4,6 +4,9 @@
     <Filter Include="Nutcracker">
       <UniqueIdentifier>{17305F91-03E8-A0DE-6CEF-793A58C63BCF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Nutcracker\Events">
+      <UniqueIdentifier>{1BFCC8CD-8712-C763-D089-52853CDF97EB}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nutcracker.h" />
@@ -16,16 +19,21 @@
     <ClInclude Include="src\Nutcracker\EntryPoint.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nutcracker\Events\ApplicationEvent.h">
+      <Filter>Nutcracker\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Events\Event.h">
+      <Filter>Nutcracker\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Events\KeyEvent.h">
+      <Filter>Nutcracker\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Events\MouseEvent.h">
+      <Filter>Nutcracker\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nutcracker\Log.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="src\Nutcracker\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Nutcracker\Events\Event.h">
-      <Filter>Nutcracker</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nutcracker\Events\KeyEvent.h" />
-    <ClInclude Include="src\Nutcracker\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp">
@@ -34,8 +42,5 @@
     <ClCompile Include="src\Nutcracker\Log.cpp">
       <Filter>Nutcracker</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Nutcracker.rc" />
   </ItemGroup>
 </Project>
