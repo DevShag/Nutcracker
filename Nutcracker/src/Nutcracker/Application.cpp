@@ -1,3 +1,4 @@
+#include "ncpch.h"
 #include "Application.h"
 #include "Nutcracker/Events/ApplicationEvent.h"
 #include "Nutcracker/Log.h"

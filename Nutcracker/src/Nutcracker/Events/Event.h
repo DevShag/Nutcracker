@@ -2,7 +2,6 @@
 
 #pragma once
 #include "Nutcracker/Core.h"
-#include <string>
 #include <functional>
 
 //$(ProjectDir)src

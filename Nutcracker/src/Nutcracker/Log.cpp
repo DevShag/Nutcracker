@@ -1,3 +1,4 @@
+#include "ncpch.h"
 #include "Log.h"
 
 namespace Nutcracker {
