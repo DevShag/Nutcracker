@@ -35,6 +35,10 @@
       <Filter>Nutcracker</Filter>
     </ClInclude>
     <ClInclude Include="src\ncpch.h" />
+    <ClInclude Include="Window.h">
+      <Filter>Nutcracker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp">
@@ -44,5 +48,6 @@
       <Filter>Nutcracker</Filter>
     </ClCompile>
     <ClCompile Include="src\ncpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

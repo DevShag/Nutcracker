@@ -11,6 +11,12 @@
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	--Include directories relative to root folder (solution directory)
+	IncludeDir={}
+	IncludeDir["GLFW"]="Nutcracker/vendor/GLFW/include"
+
+	include "Nutcracker/vendor/GLFW"
+
 project "Nutcracker"
      location "Nutcracker"
 	 kind "sharedLib"
@@ -31,7 +37,14 @@ project "Nutcracker"
 	includedirs
 	{
 		"$(ProjectDir)src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
