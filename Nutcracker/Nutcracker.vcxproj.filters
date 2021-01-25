@@ -35,10 +35,10 @@
       <Filter>Nutcracker</Filter>
     </ClInclude>
     <ClInclude Include="src\ncpch.h" />
-    <ClInclude Include="Window.h">
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Nutcracker\Window.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp">

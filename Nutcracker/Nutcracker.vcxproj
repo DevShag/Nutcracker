@@ -160,7 +160,7 @@
     <ClInclude Include="src\Nutcracker\Events\MouseEvent.h" />
     <ClInclude Include="src\Nutcracker\Log.h" />
     <ClInclude Include="src\ncpch.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="src\Nutcracker\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
