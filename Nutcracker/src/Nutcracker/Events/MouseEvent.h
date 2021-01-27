@@ -17,7 +17,7 @@ namespace Nutcracker {
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(EventType::MouseMoved)
+		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
@@ -40,7 +40,7 @@ namespace Nutcracker {
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(EventType::MouseScrolled)
+		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
@@ -70,7 +70,7 @@ namespace Nutcracker {
 			ss << "MouseButtonPressedEvent: " << m_Button;
 			return ss.str();
 		}
-		EVENT_CLASS_TYPE(EventType::MouseButtonPressed);
+		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
 	class NUTCRACKER_API MouseButtonReleasedEvent : public MouseButtonEvent {
@@ -83,7 +83,7 @@ namespace Nutcracker {
 			ss << "MouseButtonReleasedEvent: " << m_Button;
 			return ss.str();
 		}
-		EVENT_CLASS_TYPE(EventType::MouseButtonReleased);
+		EVENT_CLASS_TYPE(MouseButtonReleased);
 	};
 
 
