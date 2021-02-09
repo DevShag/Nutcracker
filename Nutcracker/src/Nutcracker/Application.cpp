@@ -1,14 +1,15 @@
 #include "ncpch.h"
 #include "Application.h"
-
-#include "Nutcracker/Events/ApplicationEvent.h"
 #include "Nutcracker/Log.h"
-
 #include <GLFW/glfw3.h>
+
 
 namespace Nutcracker {
 
    #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
+	//auto fn1 = bind(func, _1, 2, 3);
+
 
 	Application::Application()
 	{
@@ -26,7 +27,7 @@ namespace Nutcracker {
 		dispature.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		NC_CORE_TRACE("{0}", e);
 	}
-}
+
 	void Application::Run()
 	{
 		
@@ -43,5 +44,7 @@ namespace Nutcracker {
 		m_Running = false;
 		return true;
 	}
+
+}
 
 	

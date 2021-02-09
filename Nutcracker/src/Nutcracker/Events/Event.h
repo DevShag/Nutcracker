@@ -72,7 +72,7 @@ namespace Nutcracker {
 			return GetCategoryFlags() & category;
 		}
 
-	protected:
+	//protected:
 		bool m_Handled = false;
 
 	};
