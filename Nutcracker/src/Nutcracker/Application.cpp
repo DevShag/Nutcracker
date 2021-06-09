@@ -1,18 +1,24 @@
 #include "ncpch.h"
 #include "Application.h"
 #include "Nutcracker/Log.h"
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include "Input.h"
 
 
 namespace Nutcracker {
 
    #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
+	Application* Application::s_Instance = nullptr;
+
 	//auto fn1 = bind(func, _1, 2, 3);
 
 
 	Application::Application()
 	{
+		NC_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
@@ -26,6 +32,25 @@ namespace Nutcracker {
 		EventDispatcher dispature(e);
 		dispature.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		NC_CORE_TRACE("{0}", e);
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
+			(*--it)->OnEvent(e);
+			//=================
+			if (e.m_Handled);
+			break;
+		}
+	}
+
+	void Application::PushLayer(Layer * layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer * layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::Run()
@@ -35,6 +60,14 @@ namespace Nutcracker {
 		{
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_LayerStack) {
+				layer->OnUpdate();
+			}
+
+			auto[x, y] = Input::GetMousePosition();
+			NC_CORE_TRACE("{0}, {1}", x, y);
+
 			m_Window->OnUpdate();
 		}
 	}

@@ -4,3 +4,6 @@
 [submodule "Nutcracker/vendor/GLFW"]
 	path = Nutcracker/vendor/GLFW
 	url = https://github.com/thecherno/glfw
+[submodule "Nutcracker/vendor/imgui"]
+	path = Nutcracker/vendor/imgui
+	url = https://github.com/DevShag/imgui

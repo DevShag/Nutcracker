@@ -30,6 +30,7 @@ namespace Nutcracker {
 		//keyboard Event Class
 		KeyPressed,
 		KeyReleased,
+		KeyTyped,
 
 		//Mouse Button Event Class
 		MouseButtonPressed,

@@ -14,8 +14,12 @@
 	--Include directories relative to root folder (solution directory)
 	IncludeDir={}
 	IncludeDir["GLFW"]="Nutcracker/vendor/GLFW/include"
+	IncludeDir["Glad"]="Nutcracker/vendor/Glad/include"
+	IncludeDir["ImGui"]="Nutcracker/vendor/imgui"
 
 	include "Nutcracker/vendor/GLFW"
+	include "Nutcracker/vendor/Glad"
+	include "Nutcracker/vendor/imgui"
 
 project "Nutcracker"
      location "Nutcracker"
@@ -38,12 +42,16 @@ project "Nutcracker"
 	{
 		"$(ProjectDir)src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -55,7 +63,8 @@ project "Nutcracker"
 		defines
 		{
 			"NC_PLATFORM_WINDOWS",
-			"NC_BUILD_DLL"
+			"NC_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -65,14 +74,17 @@ project "Nutcracker"
 
 		filter "configurations:Debug"
 			defines "NC_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "NC_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "NC_DIST"
+			buildoptions "/MDd"
 			optimize "On"
 
 
@@ -113,14 +125,17 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 			defines "NC_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "NC_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "NC_DIST"
+			buildoptions "/MD"
 			optimize "On"
 
 

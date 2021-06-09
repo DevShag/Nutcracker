@@ -29,7 +29,7 @@ namespace Nutcracker {
 	public :
 		
 		MouseScrolledEvent(float xOffset, float yOffset):
-		m_XOffset(xOffset), m_YOffset(m_YOffset){}
+		m_XOffset(xOffset), m_YOffset(yOffset){}
 
 		inline float GetXOffset() const { return m_XOffset; }
 		inline float GetYOffset() const { return m_YOffset; }
@@ -51,7 +51,7 @@ namespace Nutcracker {
 	class NUTCRACKER_API MouseButtonEvent : public Event {
 
 	public:
-		inline float GetMouseButton() const { return m_Button; }
+		inline int GetMouseButton() const { return m_Button; }
 				
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
