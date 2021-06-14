@@ -46,6 +46,12 @@
     <ClInclude Include="src\Nutcracker\ImGui\ImGuiLayer.h">
       <Filter>Nutcracker\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nutcracker\Input.h">
+      <Filter>Nutcracker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\KeyCodes.h">
+      <Filter>Nutcracker</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nutcracker\Layer.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
@@ -55,22 +61,22 @@
     <ClInclude Include="src\Nutcracker\Log.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nutcracker\MouseButtonCodes.h">
+      <Filter>Nutcracker</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nutcracker\Window.h">
       <Filter>Nutcracker</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGlRender.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\ncpch.h" />
-    <ClInclude Include="src\Nutcracker\Input.h">
-      <Filter>Nutcracker</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>Platform\Windows</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp">
@@ -91,12 +97,12 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGlRender.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\ncpch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -31,14 +31,17 @@ namespace Nutcracker {
 	{
 		EventDispatcher dispature(e);
 		dispature.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		NC_CORE_TRACE("{0}", e);
+		//NC_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
 			(*--it)->OnEvent(e);
 			//=================
-			if (e.m_Handled);
-			break;
+			if (e.m_Handled) {
+				break;
+
+			}
 		}
+
 	}
 
 	void Application::PushLayer(Layer * layer)
@@ -65,8 +68,8 @@ namespace Nutcracker {
 				layer->OnUpdate();
 			}
 
-			auto[x, y] = Input::GetMousePosition();
-			NC_CORE_TRACE("{0}, {1}", x, y);
+			/*auto[x, y] = Input::GetMousePosition();
+			NC_CORE_TRACE("{0}, {1}", x, y);*/
 
 			m_Window->OnUpdate();
 		}

@@ -163,9 +163,11 @@
     <ClInclude Include="src\Nutcracker\Events\MouseEvent.h" />
     <ClInclude Include="src\Nutcracker\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Nutcracker\Input.h" />
+    <ClInclude Include="src\Nutcracker\KeyCodes.h" />
     <ClInclude Include="src\Nutcracker\Layer.h" />
     <ClInclude Include="src\Nutcracker\LayerStack.h" />
     <ClInclude Include="src\Nutcracker\Log.h" />
+    <ClInclude Include="src\Nutcracker\MouseButtonCodes.h" />
     <ClInclude Include="src\Nutcracker\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGlRender.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
