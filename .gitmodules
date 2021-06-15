@@ -7,3 +7,6 @@
 [submodule "Nutcracker/vendor/imgui"]
 	path = Nutcracker/vendor/imgui
 	url = https://github.com/DevShag/imgui
+[submodule "Nutcracker/vendor/glm"]
+	path = Nutcracker/vendor/glm
+	url = https://github.com/g-truc/glm

@@ -16,6 +16,7 @@
 	IncludeDir["GLFW"]="Nutcracker/vendor/GLFW/include"
 	IncludeDir["Glad"]="Nutcracker/vendor/Glad/include"
 	IncludeDir["ImGui"]="Nutcracker/vendor/imgui"
+	IncludeDir["glm"]="Nutcracker/vendor/glm"
 
 	include "Nutcracker/vendor/GLFW"
 	include "Nutcracker/vendor/Glad"
@@ -35,7 +36,9 @@ project "Nutcracker"
 	files
 	{
 	    "%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -44,7 +47,8 @@ project "Nutcracker"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -105,7 +109,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Nutcracker/vendor/spdlog/include",
-		"Nutcracker/src"
+		"Nutcracker/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
