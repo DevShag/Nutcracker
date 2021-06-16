@@ -5,6 +5,7 @@
 #include "Nutcracker/Events/ApplicationEvent.h"
 #include "Nutcracker/Layer.h"
 #include "LayerStack.h"
+#include "Nutcracker/ImGui/ImGuiLayer.h"
 
 namespace Nutcracker {
 
@@ -29,6 +30,7 @@ namespace Nutcracker {
 
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

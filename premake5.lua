@@ -110,6 +110,7 @@ project "Sandbox"
 	{
 		"Nutcracker/vendor/spdlog/include",
 		"Nutcracker/src",
+		"Nutcracker/vendor",
 		"%{IncludeDir.glm}"
 	}
 
