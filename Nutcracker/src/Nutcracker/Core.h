@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef NC_PLATFORM_WINDOWS
+#if NC_DYNAMIC_LINK
 	#ifdef NC_BUILD_DLL
 		#define NUTCRACKER_API _declspec(dllexport)
 	#else
 		#define NUTCRACKER_API _declspec(dllimport)
 	#endif
+#else
+	#define NUTCRACKER_API
+#endif
 
 #else
 	#error Nutcracker only support Windows!
