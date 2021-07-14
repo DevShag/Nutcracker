@@ -6,14 +6,10 @@
 #include "Nutcracker/Layer.h"
 #include "LayerStack.h"
 #include "Nutcracker/ImGui/ImGuiLayer.h"
-#include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Nutcracker/Renderer/VertexArray.h"
-#include "Renderer/OrthographicCamera.h"
 
 namespace Nutcracker {
 
-	class NUTCRACKER_API Application
+	class Application
 	{
 
 	public:
@@ -38,12 +34,11 @@ namespace Nutcracker {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		OrthographicCamera m_Camera;
-		//unsigned int m_VertexArray;
+		/*OrthographicCamera m_Camera;		
 		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<VertexArray> m_VertexArray;
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;*/
 
 	private:
 		static Application* s_Instance;

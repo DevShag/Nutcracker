@@ -12,5 +12,16 @@
 
 #include "Nutcracker/ImGui/ImGuiLayer.h"
 
+//===========Renderer========================
+#include "Nutcracker/Renderer/Renderer.h"
+#include "Nutcracker/Renderer/RenderCommand.h"
+
+#include "Nutcracker/Renderer/Buffer.h"
+#include "Nutcracker/Renderer/Shader.h"
+#include "Nutcracker/Renderer/VertexArray.h"
+
+#include "Nutcracker/Renderer/OrthographicCamera.h"
+//==============================================
+
 //---------Entry Point-----------------
 #include "Nutcracker/EntryPoint.h"
