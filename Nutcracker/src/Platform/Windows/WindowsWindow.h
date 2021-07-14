@@ -3,7 +3,7 @@
 
 #include <GLFW/glfw3.h>
 #include "Nutcracker/Window.h"
-
+#include "Nutcracker/Renderer/GraphicsContext.h"
 
 
 namespace Nutcracker {
@@ -34,6 +34,7 @@ namespace Nutcracker {
 	private:
 
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;

@@ -21,25 +21,25 @@ public:
 	void OnUpdate() override {
 		//NC_INFO("ExampleLayer::Update");
 
-		if (Nutcracker::Input::IsKeyPressed(NC_KEY_TAB)) {
+		/*if (Nutcracker::Input::IsKeyPressed(NC_KEY_TAB)) {
 			NC_TRACE("Tan key is pressed");
-		}
+		}*/
 	}
 
 	virtual void OnImGuiRender() override {
 
-		ImGui::Begin("Test");
+		/*ImGui::Begin("Test");
 		ImGui::Text("Hello World");
-		ImGui::End();
+		ImGui::End();*/
 	}
 
 	void OnEvent(Nutcracker::Event& event) override {
 		//NC_TRACE("{0}", event);
 
-		if (event.GetEventType() == Nutcracker::EventType::KeyPressed) {
+		/*if (event.GetEventType() == Nutcracker::EventType::KeyPressed) {
 			Nutcracker::KeyPressedEvent& e = (Nutcracker::KeyPressedEvent&)event;
 			NC_TRACE("{0}", (char)e.GetKeyCode());
-		}
+		}*/
 	}
 };
 
