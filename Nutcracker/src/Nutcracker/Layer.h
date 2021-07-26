@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Nutcracker/Events/Event.h"
+#include "Nutcracker/Core/Timestep.h"
 
 namespace Nutcracker {
 
@@ -14,7 +15,7 @@ namespace Nutcracker {
 
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
-		virtual void OnUpdate() {};
+		virtual void OnUpdate(Timestep ts) {};
 		virtual void OnImGuiRender() {};
 		virtual void OnEvent(Event& event) {};
 

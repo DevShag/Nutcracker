@@ -17,6 +17,7 @@
 	IncludeDir["Glad"]="Nutcracker/vendor/Glad/include"
 	IncludeDir["ImGui"]="Nutcracker/vendor/imgui"
 	IncludeDir["glm"]="Nutcracker/vendor/glm"
+	IncludeDir["stb_image"]="Nutcracker/vendor/stb_image"
 
 	include "Nutcracker/vendor/GLFW"
 	include "Nutcracker/vendor/Glad"
@@ -39,6 +40,8 @@ project "Nutcracker"
 	{
 	    "%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -55,7 +58,8 @@ project "Nutcracker"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

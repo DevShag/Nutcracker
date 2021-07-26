@@ -6,6 +6,8 @@
 #include "Nutcracker/Layer.h"
 #include "Nutcracker/Log.h"
 
+#include "Nutcracker/Core/Timestep.h"
+
 #include "Nutcracker/Input.h"
 #include "Nutcracker/KeyCodes.h"
 #include "Nutcracker/MouseButtonCodes.h"
@@ -19,6 +21,7 @@
 #include "Nutcracker/Renderer/Buffer.h"
 #include "Nutcracker/Renderer/Shader.h"
 #include "Nutcracker/Renderer/VertexArray.h"
+#include <Nutcracker/Renderer/Texture.h>
 
 #include "Nutcracker/Renderer/OrthographicCamera.h"
 //==============================================

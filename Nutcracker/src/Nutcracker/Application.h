@@ -6,6 +6,7 @@
 #include "Nutcracker/Layer.h"
 #include "LayerStack.h"
 #include "Nutcracker/ImGui/ImGuiLayer.h"
+#include "Nutcracker/Core/Timestep.h"
 
 namespace Nutcracker {
 
@@ -34,11 +35,7 @@ namespace Nutcracker {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		/*OrthographicCamera m_Camera;		
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;*/
+		float m_LastFrameTime=0.0f;
 
 	private:
 		static Application* s_Instance;

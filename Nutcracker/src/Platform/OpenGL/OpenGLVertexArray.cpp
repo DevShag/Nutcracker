@@ -48,7 +48,7 @@ namespace Nutcracker {
 	}
 
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();
@@ -71,18 +71,19 @@ namespace Nutcracker {
 	}
 
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 		m_IndexBuffer = indexBuffer;
 	}
 
-	std::vector<std::shared_ptr<VertexBuffer>> OpenGLVertexArray::GetVertexBuffer()
+	std::vector<Ref<VertexBuffer>> OpenGLVertexArray::GetVertexBuffer()
 	{
 		return m_VertexBuffers;
 	}
-	std::shared_ptr<IndexBuffer> OpenGLVertexArray::GetIndexBuffer()
+
+	Ref<IndexBuffer> OpenGLVertexArray::GetIndexBuffer()
 	{
 		return m_IndexBuffer;
 	}

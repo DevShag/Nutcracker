@@ -78,7 +78,7 @@
       <PrecompiledHeaderFile>ncpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NC_PLATFORM_WINDOWS;NC_BUILD_DLL;GLFW_INCLUDE_NONE;NC_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,7 +98,7 @@
       <PrecompiledHeaderFile>ncpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NC_PLATFORM_WINDOWS;NC_BUILD_DLL;GLFW_INCLUDE_NONE;NC_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -122,7 +122,7 @@
       <PrecompiledHeaderFile>ncpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NC_PLATFORM_WINDOWS;NC_BUILD_DLL;GLFW_INCLUDE_NONE;NC_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -141,11 +141,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Nutcracker\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\Buffer.h" />
     <ClInclude Include="src\Nutcracker.h" />
     <ClInclude Include="src\Nutcracker\Application.h" />
     <ClInclude Include="src\Nutcracker\Core.h" />
+    <ClInclude Include="src\Nutcracker\Core\Timestep.h" />
     <ClInclude Include="src\Nutcracker\EntryPoint.h" />
     <ClInclude Include="src\Nutcracker\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Nutcracker\Events\Event.h" />
@@ -158,16 +157,21 @@
     <ClInclude Include="src\Nutcracker\LayerStack.h" />
     <ClInclude Include="src\Nutcracker\Log.h" />
     <ClInclude Include="src\Nutcracker\MouseButtonCodes.h" />
+    <ClInclude Include="src\Nutcracker\Renderer\Buffer.h" />
     <ClInclude Include="src\Nutcracker\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Nutcracker\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Nutcracker\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Nutcracker\Renderer\Renderer.h" />
     <ClInclude Include="src\Nutcracker\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Nutcracker\Renderer\Shader.h" />
+    <ClInclude Include="src\Nutcracker\Renderer\Texture.h" />
     <ClInclude Include="src\Nutcracker\Renderer\VertexArray.h" />
     <ClInclude Include="src\Nutcracker\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -587,30 +591,35 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Nutcracker\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Nutcracker\Application.cpp" />
     <ClCompile Include="src\Nutcracker\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Nutcracker\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nutcracker\Layer.cpp" />
     <ClCompile Include="src\Nutcracker\LayerStack.cpp" />
     <ClCompile Include="src\Nutcracker\Log.cpp" />
+    <ClCompile Include="src\Nutcracker\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Nutcracker\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Nutcracker\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Nutcracker\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Nutcracker\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Nutcracker\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Nutcracker\Renderer\Texture.cpp" />
     <ClCompile Include="src\Nutcracker\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\ncpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

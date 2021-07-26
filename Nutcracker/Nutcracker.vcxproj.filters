@@ -7,14 +7,23 @@
     <Filter Include="src\Nutcracker">
       <UniqueIdentifier>{CECC65C8-BA9A-59CE-A32E-CAF48F9B3533}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nutcracker\Core">
+      <UniqueIdentifier>{E621E58F-5283-C29D-DBF0-08504751F95C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Nutcracker\Events">
       <UniqueIdentifier>{F244D722-5EB1-921D-27A5-2A7B93D0B485}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Nutcracker\ImGui">
       <UniqueIdentifier>{7824F48C-64B3-7D56-0DD2-9151F93F8EFC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nutcracker\Renderer">
+      <UniqueIdentifier>{3458B72C-A08F-FFC3-A999-63E7155026BD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -40,6 +49,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nutcracker.h">
@@ -50,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="src\Nutcracker\Core.h">
       <Filter>src\Nutcracker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Core\Timestep.h">
+      <Filter>src\Nutcracker\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nutcracker\EntryPoint.h">
       <Filter>src\Nutcracker</Filter>
@@ -87,8 +102,53 @@
     <ClInclude Include="src\Nutcracker\MouseButtonCodes.h">
       <Filter>src\Nutcracker</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\Buffer.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\GraphicsContext.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\OrthographicCamera.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\RenderCommand.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\Renderer.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\RendererAPI.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\Shader.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\Texture.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nutcracker\Renderer\VertexArray.h">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nutcracker\Window.h">
       <Filter>src\Nutcracker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -1344,18 +1404,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nutcracker\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\Shader.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\Renderer.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Nutcracker\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nutcracker\Application.cpp">
@@ -1376,6 +1427,48 @@
     <ClCompile Include="src\Nutcracker\Log.cpp">
       <Filter>src\Nutcracker</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\Buffer.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\RenderCommand.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\Renderer.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\RendererAPI.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\Shader.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\Texture.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nutcracker\Renderer\VertexArray.cpp">
+      <Filter>src\Nutcracker\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1385,16 +1478,8 @@
     <ClCompile Include="src\ncpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Nutcracker\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

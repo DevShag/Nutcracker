@@ -2,7 +2,8 @@
 #include "Application.h"
 #include "Nutcracker/Log.h"
 #include "Input.h"
-#include "glm/glm.hpp"
+
+#include "GLFW/glfw3.h"
 
 
 #include "Renderer/RenderCommand.h"
@@ -79,27 +80,12 @@ namespace Nutcracker {
 		
 		while (m_Running)
 		{		
-			/*RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
-
-			m_Camera.SetPosition({ 0.5f,0.5f,0.0f });
-			m_Camera.SetRotation(45.0f);
-
-			Renderer::BeginScene(m_Camera);
-			{			
-				Renderer::Submit(m_Shader,m_VertexArray);
-			}
-			
-			Renderer::EndScene();*/
-
-			//glBindVertexArray(m_VertexArray);
-			//m_VertexArray->Bind();
-
-			//Draw Call
-			//glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			float time = (float)glfwGetTime();  //later it should be in Platform floder
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (Layer* layer : m_LayerStack) {
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();

@@ -1,13 +1,12 @@
 #include "ncpch.h"
-#include "Shader.h"
+#include "Texture.h"
 #include "Renderer.h"
-#include "Platform/OpenGL/OpenGLShader.h"
-//#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLTexture.h"
 
 
 namespace Nutcracker {
 
-	Shader * Shader::Create(const std::string & vertexSrc, const std::string & fragmentSrc)
+	Ref<Texture2D> Texture2D::Create(const std::string & path)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -16,11 +15,10 @@ namespace Nutcracker {
 			return nullptr;
 
 		case RendererAPI::API::OpenGL:
-			return new OpenGlShader(vertexSrc, fragmentSrc);
+			return std::make_shared<OpenGLTexture2D>(path);			
 		}
 
 		NC_CORE_ASSERT(false, "Unknown RendererAPI!");
-		return nullptr;
+		return Ref<Texture2D>();
 	}
-	
 }
