@@ -3,12 +3,16 @@
 #include <Nutcracker/Renderer/Shader.h>
 #include <glm/glm.hpp>
 
+//TODO Remove 
+typedef unsigned int GLenum;
+
 namespace Nutcracker {
 
 	class OpenGlShader : public Shader
 	{	
 	public:
-		OpenGlShader::OpenGlShader(const std::string & vertexSrc, const std::string & fragmentSrc);
+		OpenGlShader(const std::string & filepath);
+		OpenGlShader(const std::string & vertexSrc, const std::string & fragmentSrc);
 		~OpenGlShader();
 
 		// Inherited via Shader
@@ -24,6 +28,12 @@ namespace Nutcracker {
 
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
+
+	private:
+
+		std::string ReadFile(const std::string& filepath);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 
 	private:
 		uint32_t m_RendererID;
