@@ -141,6 +141,7 @@ public:
 		m_TextureShader.reset(Nutcracker::Shader::Create(textureVertexSrc, textureFragmentSrc));
 
 		m_Texture = Nutcracker::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_ChernoLogoTexture = Nutcracker::Texture2D::Create("assets/textures/ChernoLogo.png");
 
 		std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -220,6 +221,9 @@ public:
 
 			m_Texture->Bind();
 			Nutcracker::Renderer::Submit(m_TextureShader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+			m_ChernoLogoTexture->Bind();
+			Nutcracker::Renderer::Submit(m_TextureShader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		}
 
 		Nutcracker::Renderer::EndScene();
@@ -263,7 +267,7 @@ private:
 	Nutcracker::Ref<Nutcracker::VertexBuffer> m_VertexBuffer;
 	Nutcracker::Ref<Nutcracker::IndexBuffer> m_IndexBuffer;
 
-	Nutcracker::Ref<Nutcracker::Texture2D> m_Texture;
+	Nutcracker::Ref<Nutcracker::Texture2D> m_Texture, m_ChernoLogoTexture;
 	
 	Nutcracker::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
