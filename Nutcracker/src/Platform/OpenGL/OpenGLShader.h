@@ -12,12 +12,13 @@ namespace Nutcracker {
 	{	
 	public:
 		OpenGlShader(const std::string & filepath);
-		OpenGlShader(const std::string & vertexSrc, const std::string & fragmentSrc);
+		OpenGlShader(const std::string& name, const std::string & vertexSrc, const std::string & fragmentSrc);
 		~OpenGlShader();
 
 		// Inherited via Shader
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+		virtual const std::string & GetName() const override;
 
 		void UploadUniformInt(const std::string& name, const int value);
 
@@ -37,5 +38,8 @@ namespace Nutcracker {
 
 	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
+
+		
 	};
 }

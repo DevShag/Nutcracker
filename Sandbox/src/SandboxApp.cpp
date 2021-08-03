@@ -11,6 +11,8 @@
 
 
 
+
+
 class ExampleLayer :public Nutcracker::Layer
 {
 public:
@@ -95,20 +97,20 @@ public:
 		)";
 
 
-		m_Shader.reset(Nutcracker::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Nutcracker::Shader::Create("VertexColor",vertexSrc, fragmentSrc);
 
 
 		//==============================================================
 
 
-		m_TextureShader.reset(Nutcracker::Shader::Create(vertexSrc, fragmentSrc));
-		m_TextureShader.reset(Nutcracker::Shader::Create("assets/shaders/Texture.glsl"));
+		//m_TextureShader = Nutcracker::Shader::Create(vertexSrc, fragmentSrc);
+		auto textureShader = m_ShaderLibraray.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Nutcracker::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Nutcracker::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Nutcracker::Timestep ts) override {
@@ -183,11 +185,12 @@ public:
 				}
 			}
 
+			auto textureShader = m_ShaderLibraray.Get("Texture");
 			m_Texture->Bind();
-			Nutcracker::Renderer::Submit(m_TextureShader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			Nutcracker::Renderer::Submit(textureShader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 			m_ChernoLogoTexture->Bind();
-			Nutcracker::Renderer::Submit(m_TextureShader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			Nutcracker::Renderer::Submit(textureShader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		}
 
 		Nutcracker::Renderer::EndScene();
@@ -226,7 +229,8 @@ public:
 	}*/
 
 private:
-	Nutcracker::Ref<Nutcracker::Shader> m_Shader, m_TextureShader;
+	Nutcracker::ShaderLibrary m_ShaderLibraray;
+	Nutcracker::Ref<Nutcracker::Shader> m_Shader;// , m_TextureShader;
 	Nutcracker::Ref<Nutcracker::VertexArray> m_VertexArray;
 	Nutcracker::Ref<Nutcracker::VertexBuffer> m_VertexBuffer;
 	Nutcracker::Ref<Nutcracker::IndexBuffer> m_IndexBuffer;

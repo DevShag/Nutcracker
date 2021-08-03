@@ -30,9 +30,19 @@ namespace Nutcracker {
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
+
+		//Extract name from filepath
+		//ex: assets/shaders/Texture.glsl
+		auto lastSlash = filepath.find_last_of("/\\");
+		//or if there is no / in the path direct file name eg: Texture.glsl
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.rfind('.');
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		m_Name = filepath.substr(lastSlash, count);
 	}
 
-	OpenGlShader::OpenGlShader(const std::string & vertexSrc, const std::string & fragmentSrc)
+	OpenGlShader::OpenGlShader(const std::string& name, const std::string & vertexSrc, const std::string & fragmentSrc)
+		:m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
@@ -55,6 +65,11 @@ namespace Nutcracker {
 	void OpenGlShader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	const std::string & OpenGlShader::GetName() const
+	{
+		return m_Name;
 	}
 
 	void OpenGlShader::UploadUniformInt(const std::string & name, const int value)
@@ -102,7 +117,7 @@ namespace Nutcracker {
 	std::string Nutcracker::OpenGlShader::ReadFile(const std::string & filepath)
 	{
 		std::string result;
-		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
 		{
 			in.seekg(0, std::ios::end);
@@ -146,7 +161,9 @@ namespace Nutcracker {
 	void OpenGlShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
 		GLuint program = glCreateProgram();
-		std::vector<GLenum> glShaderIDs(shaderSources.size());
+		NC_CORE_ASSERT(shaderSources.size() <= 2, "We only support 2 shaders for now");
+		std::array<GLenum,2> glShaderIDs;
+		int glShaderIDIndex=0;
 
 		for (auto& kv : shaderSources)
 		{
@@ -184,7 +201,7 @@ namespace Nutcracker {
 			}
 
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[glShaderIDIndex++]=shader;
 		}
 		
 		// Link our program
@@ -223,6 +240,8 @@ namespace Nutcracker {
 		m_RendererID = program;
 		
 	}
+
+	
 
 
 }
