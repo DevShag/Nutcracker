@@ -1,13 +1,13 @@
 #include "ncpch.h"
 #include "Application.h"
-#include "Nutcracker/Log.h"
+#include "Nutcracker/Core/Log.h"
 #include "Input.h"
 
 #include "GLFW/glfw3.h"
 
 
-#include "Renderer/RenderCommand.h"
-#include "Renderer/Renderer.h"
+#include "Nutcracker/Renderer/RenderCommand.h"
+#include "Nutcracker/Renderer/Renderer.h"
 
 
 

@@ -2,7 +2,7 @@
 
 
 #include <GLFW/glfw3.h>
-#include "Nutcracker/Window.h"
+#include "Nutcracker/Core/Window.h"
 #include "Nutcracker/Renderer/GraphicsContext.h"
 
 

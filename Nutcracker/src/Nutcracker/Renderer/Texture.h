@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Nutcracker/Core.h"
+#include "Nutcracker/Core/Core.h"
 
 namespace Nutcracker {
 

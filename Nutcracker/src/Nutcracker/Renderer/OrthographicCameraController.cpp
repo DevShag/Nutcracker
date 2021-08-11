@@ -1,8 +1,8 @@
 #include "ncpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Nutcracker/Input.h"
-#include "Nutcracker/KeyCodes.h"
+#include "Nutcracker/Core/Input.h"
+#include "Nutcracker/Core/KeyCodes.h"
 
 namespace Nutcracker
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ncpch.h"
-#include "Nutcracker/Window.h"
+#include "Nutcracker/Core/Window.h"
 #include "Nutcracker/Events/Event.h"
 
 

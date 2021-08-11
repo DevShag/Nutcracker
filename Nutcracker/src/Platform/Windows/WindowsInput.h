@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nutcracker/Input.h"
+#include "Nutcracker/Core/Input.h"
 
 
 namespace Nutcracker {

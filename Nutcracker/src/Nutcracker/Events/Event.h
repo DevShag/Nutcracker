@@ -1,7 +1,7 @@
 #pragma once
 
 #pragma once
-#include "Nutcracker/Core.h"
+#include "Nutcracker/Core/Core.h"
 #include <functional>
 
 //$(ProjectDir)src

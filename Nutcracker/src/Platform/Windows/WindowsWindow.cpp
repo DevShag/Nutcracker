@@ -1,6 +1,6 @@
 #include "ncpch.h"
 #include "WindowsWindow.h"
-#include "Nutcracker/Log.h"
+#include "Nutcracker/Core/Log.h"
 #include "Nutcracker/Events/ApplicationEvent.h"
 #include "Nutcracker/Events/KeyEvent.h"
 #include "Nutcracker/Events/MouseEvent.h"

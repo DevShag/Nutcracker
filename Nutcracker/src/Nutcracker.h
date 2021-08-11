@@ -2,18 +2,18 @@
 
 //For use by Nutcracker applications
 
-#include "Nutcracker/Application.h"
-#include "Nutcracker/Layer.h"
-#include "Nutcracker/Log.h"
+#include "Nutcracker/Core/Application.h"
+#include "Nutcracker/Core/Layer.h"
+#include "Nutcracker/Core/Log.h"
 
 #include "Nutcracker/Core/Timestep.h"
 
-#include "Nutcracker/Input.h"
-#include "Nutcracker/KeyCodes.h"
-#include "Nutcracker/MouseButtonCodes.h"
+#include "Nutcracker/Core/Input.h"
+#include "Nutcracker/Core/KeyCodes.h"
+#include "Nutcracker/Core/MouseButtonCodes.h"
 
 #include "Nutcracker/ImGui/ImGuiLayer.h"
-#include "Nutcracker/OrthographicCameraController.h"
+#include "Nutcracker/Renderer/OrthographicCameraController.h"
 
 //===========Renderer========================
 #include "Nutcracker/Renderer/Renderer.h"
@@ -28,4 +28,4 @@
 //==============================================
 
 //---------Entry Point-----------------
-#include "Nutcracker/EntryPoint.h"
+#include "Nutcracker/Core/EntryPoint.h"

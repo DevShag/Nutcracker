@@ -1,6 +1,6 @@
 #include "ncpch.h"
 #include "WindowsInput.h"
-#include "Nutcracker/Application.h"
+#include "Nutcracker/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Nutcracker {
