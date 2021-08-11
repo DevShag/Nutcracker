@@ -3,7 +3,7 @@
 
 namespace Nutcracker {
 
-	class NUTCRACKER_API MouseMovedEvent : public Event {
+	class MouseMovedEvent : public Event {
 		
 	public:
 		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y){}
@@ -24,7 +24,8 @@ namespace Nutcracker {
 		float m_MouseX, m_MouseY;
 	};
 
-	class NUTCRACKER_API MouseScrolledEvent : public Event {
+	class MouseScrolledEvent : public Event 
+	{
 		
 	public :
 		
@@ -48,7 +49,7 @@ namespace Nutcracker {
 	};
 
 
-	class NUTCRACKER_API MouseButtonEvent : public Event {
+	class MouseButtonEvent : public Event {
 
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -60,7 +61,7 @@ namespace Nutcracker {
 		int m_Button;
 	};
 
-	class NUTCRACKER_API MouseButtonPressedEvent : public MouseButtonEvent {
+	class MouseButtonPressedEvent : public MouseButtonEvent {
 
 	public:
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
@@ -73,7 +74,7 @@ namespace Nutcracker {
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
-	class NUTCRACKER_API MouseButtonReleasedEvent : public MouseButtonEvent {
+	class MouseButtonReleasedEvent : public MouseButtonEvent {
 
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}

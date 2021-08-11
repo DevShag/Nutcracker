@@ -1,16 +1,11 @@
 #include <Nutcracker.h>
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
-
-#include "Platform/OpenGL/OpenGLShader.h"
-
 #include <glm/gtc/type_ptr.hpp>
-
-
-
-
 
 
 class ExampleLayer :public Nutcracker::Layer
@@ -18,19 +13,10 @@ class ExampleLayer :public Nutcracker::Layer
 public:
 	
 	ExampleLayer() :Layer("Example"),
-		m_Camera(-1.0f, 1.0f, -1.0f, 1.0f),
-		m_CameraPosition(0.0f, 0.0f, 0.0f),
+		m_CameraController(1280.0f/720.0f),
 		m_TrianglePosition(0.0f, 0.0f, 0.0f)
 	{
 		m_VertexArray.reset(Nutcracker::VertexArray::Create());
-
-
-		/*float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.0f, 0.8f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
-		};
-*/
 
 
 		float vertices[5 * 4] = {
@@ -45,15 +31,13 @@ public:
 		{
 			Nutcracker::BufferLayout layout = {
 			{Nutcracker::ShaderDataType::Float3, "a_Position"},
-			{Nutcracker::ShaderDataType::Float2, "a_TexCoord"}
-			//{ShaderDataType::Float3, "a_Normal"}
+			{Nutcracker::ShaderDataType::Float2, "a_TexCoord"}			
 			};
 			m_VertexBuffer->SetLayout(layout);
 		}
 
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);	
 
-		//uint32_t indices[3] = { 0,1,2 };
 		uint32_t indices[6] = { 0, 1, 2, 2, 3, 0 };
 		m_IndexBuffer.reset(Nutcracker::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
@@ -115,32 +99,7 @@ public:
 
 	void OnUpdate(Nutcracker::Timestep ts) override {
 
-		//NC_TRACE("Delta time: {0} ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
-
-		if (Nutcracker::Input::IsKeyPressed( NC_KEY_LEFT)) {
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		}
-
-		else if (Nutcracker::Input::IsKeyPressed(NC_KEY_RIGHT)) {
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		}
-
-		if (Nutcracker::Input::IsKeyPressed(NC_KEY_DOWN)) {
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		}
-
-		else if (Nutcracker::Input::IsKeyPressed(NC_KEY_UP)) {
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		} 
-
-		if (Nutcracker::Input::IsKeyPressed(NC_KEY_A)) {
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		}
-
-		else if (Nutcracker::Input::IsKeyPressed(NC_KEY_D)) {
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-		}
-
+		m_CameraController.OnUpdate(ts);
 
 		//============================================
 
@@ -163,10 +122,8 @@ public:
 		Nutcracker::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Nutcracker::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Nutcracker::Renderer::BeginScene(m_Camera);
+		
+		Nutcracker::Renderer::BeginScene(m_CameraController.GetCamera());
 		{
 			glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.05f));
 
@@ -203,30 +160,14 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Nutcracker::Event& event) override {
-		//Nutcracker::EventDispatcher dispature(event);
-		//dispature.Dispatch<Nutcracker::KeyPressedEvent>(NC_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
+	void OnEvent(Nutcracker::Event& event) override
+	{
+
+		//NC_CORE_ASSERT("Scroll Y ({0}): ", 2);
+		m_CameraController.OnEvent(event);
 	}
 
-	/*bool OnKeyPressedEvent(Nutcracker::KeyPressedEvent& event) {
-		if (event.GetKeyCode() == NC_KEY_LEFT) {
-			m_CameraPosition.x -= m_CameraSpeed;
-		}
-
-		if (event.GetKeyCode() == NC_KEY_RIGHT) {
-			m_CameraPosition.x += m_CameraSpeed;
-		}
-
-		if (event.GetKeyCode() == NC_KEY_DOWN) {
-			m_CameraPosition.y -= m_CameraSpeed;
-		}
-
-		if (event.GetKeyCode() == NC_KEY_UP) {
-			m_CameraPosition.y += m_CameraSpeed;
-		}
-
-		return false;
-	}*/
+	
 
 private:
 	Nutcracker::ShaderLibrary m_ShaderLibraray;
@@ -237,13 +178,13 @@ private:
 
 	Nutcracker::Ref<Nutcracker::Texture2D> m_Texture, m_ChernoLogoTexture;
 	
-	Nutcracker::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
+	Nutcracker::OrthographicCameraController m_CameraController;
+	/*glm::vec3 m_CameraPosition;
 	float m_CameraMoveSpeed = 5.0f;
 
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 30.0f;
-
+*/
 	glm::vec3 m_Color = { 0.2f, 0.3f, 0.7f };
 
 	glm::vec3 m_TrianglePosition;

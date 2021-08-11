@@ -52,6 +52,7 @@ namespace Nutcracker {
 	{
 		EventDispatcher dispature(e);
 		dispature.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispature.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 		//NC_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
@@ -86,8 +87,11 @@ namespace Nutcracker {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			for (Layer* layer : m_LayerStack) {
-				layer->OnUpdate(timestep);
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack) {
+					layer->OnUpdate(timestep);
+				}			
 			}
 
 			m_ImGuiLayer->Begin();
@@ -104,6 +108,18 @@ namespace Nutcracker {
 	{
 		m_Running = false;
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e) {
+
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+		m_Minimized = false;
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		return false;
 	}
 
 }

@@ -141,6 +141,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Nutcracker\OrthographicCameraController.h" />
     <ClInclude Include="src\Nutcracker.h" />
     <ClInclude Include="src\Nutcracker\Application.h" />
     <ClInclude Include="src\Nutcracker\Core.h" />
@@ -594,6 +595,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Nutcracker\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Nutcracker\Application.cpp" />
     <ClCompile Include="src\Nutcracker\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Nutcracker\ImGui\ImGuiLayer.cpp" />

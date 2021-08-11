@@ -1,9 +1,6 @@
 #pragma once
 
 #include "Nutcracker/Layer.h"
-#include "Nutcracker/Events/KeyEvent.h"
-#include "Nutcracker/Events/MouseEvent.h"
-#include "Nutcracker/Events/ApplicationEvent.h"
 
 namespace Nutcracker {
 
@@ -16,21 +13,9 @@ namespace Nutcracker {
 			virtual void OnAttach() override;
 			virtual void OnDetach() override;
 			virtual void OnImGuiRender() override;
-			//virtual void OnUpdate() override;
-			//void OnEvent(Event& event);
 
 			void Begin();
 			void End();
-
-	/*private:
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-		bool OnMouseMoveEvent(MouseMovedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnKeyTypeEvent(KeyTypedEvent& e);
-		bool OnWindowResizeEvent(WindowResizeEvent& e);*/
 
 	private:
 
