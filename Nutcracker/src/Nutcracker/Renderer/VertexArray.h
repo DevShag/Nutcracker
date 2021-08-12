@@ -20,6 +20,6 @@ namespace Nutcracker {
 		virtual std::vector<Ref<VertexBuffer>> GetVertexBuffer() = 0;
 		virtual Ref<IndexBuffer> GetIndexBuffer() = 0;
 
-		static VertexArray* Create();
+		static Ref<VertexArray> Create();
 	};
 }

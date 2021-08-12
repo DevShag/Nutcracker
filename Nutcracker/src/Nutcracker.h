@@ -17,6 +17,7 @@
 
 //===========Renderer========================
 #include "Nutcracker/Renderer/Renderer.h"
+#include "Nutcracker/Renderer/Renderer2D.h"
 #include "Nutcracker/Renderer/RenderCommand.h"
 
 #include "Nutcracker/Renderer/Buffer.h"
@@ -28,4 +29,4 @@
 //==============================================
 
 //---------Entry Point-----------------
-#include "Nutcracker/Core/EntryPoint.h"
+//#include "Nutcracker/Core/EntryPoint.h"

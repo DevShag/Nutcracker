@@ -40,7 +40,6 @@ namespace Nutcracker
 			}
 			m_Camera.SetRotation(m_CameraRotation);
 		}
-
 		m_Camera.SetPosition(m_CameraPosition);
 	}
 	void OrthographicCameraController::OnEvent(Event & e)

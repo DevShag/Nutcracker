@@ -7,6 +7,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+#include "Nutcracker/Core/EntryPoint.h"
+
 
 class ExampleLayer :public Nutcracker::Layer
 {
@@ -16,7 +19,7 @@ public:
 		m_CameraController(1280.0f/720.0f),
 		m_TrianglePosition(0.0f, 0.0f, 0.0f)
 	{
-		m_VertexArray.reset(Nutcracker::VertexArray::Create());
+		m_VertexArray = Nutcracker::VertexArray::Create();
 
 
 		float vertices[5 * 4] = {
@@ -26,7 +29,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		m_VertexBuffer.reset(Nutcracker::VertexBuffer::Create(vertices, sizeof(vertices)));
+		m_VertexBuffer = Nutcracker::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		{
 			Nutcracker::BufferLayout layout = {
@@ -39,7 +42,7 @@ public:
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);	
 
 		uint32_t indices[6] = { 0, 1, 2, 2, 3, 0 };
-		m_IndexBuffer.reset(Nutcracker::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		m_IndexBuffer = Nutcracker::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 		std::string vertexSrc = R"(
@@ -131,7 +134,7 @@ public:
 			glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 
 			std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_Shader)->Bind();
-			std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_Shader)->UploadUniformFloat3("u_Color", m_Color);
+			std::dynamic_pointer_cast<Nutcracker::OpenGlShader>(m_Shader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
 			for (int i = 0; i < 20; i++) {
 				
@@ -156,7 +159,7 @@ public:
 	virtual void OnImGuiRender() override {
 
 		ImGui::Begin("Settings");
-		ImGui::ColorEdit3("Triange Color", glm::value_ptr(m_Color));
+		ImGui::ColorEdit3("Triange Color", glm::value_ptr(m_SquareColor));
 		ImGui::End();
 	}
 
@@ -185,7 +188,7 @@ private:
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 30.0f;
 */
-	glm::vec3 m_Color = { 0.2f, 0.3f, 0.7f };
+	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.7f };
 
 	glm::vec3 m_TrianglePosition;
 	float m_TriangleMoveSpeed = 5.0f;
@@ -198,8 +201,8 @@ class Sandbox :public Nutcracker::Application {
 
 public:
 	Sandbox() {
-	    PushLayer(new ExampleLayer()); 
-		//PushOverlay(new Nutcracker::ImGuiLayer());
+	    //PushLayer(new ExampleLayer()); 
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox() {

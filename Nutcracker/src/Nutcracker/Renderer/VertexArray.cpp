@@ -6,7 +6,7 @@
 namespace Nutcracker {
 
 
-	VertexArray * VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -15,7 +15,7 @@ namespace Nutcracker {
 			return nullptr;
 
 		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexArray();
+			return std::make_shared<OpenGLVertexArray>();
 		}
 
 		NC_CORE_ASSERT(false, "Unknown RendererAPI!");
