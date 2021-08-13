@@ -17,6 +17,7 @@ public:
 
 private:
 	Nutcracker::OrthographicCameraController m_CameraController;
+	Nutcracker::Ref<Nutcracker::Texture2D> m_CheckerboardTexture;
 	//Temp
 	Nutcracker::Ref<Nutcracker::VertexArray> m_SquareVA;
 	Nutcracker::Ref<Nutcracker::Shader>m_FlatColorShader;

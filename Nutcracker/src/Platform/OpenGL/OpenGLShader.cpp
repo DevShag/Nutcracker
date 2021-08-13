@@ -82,6 +82,11 @@ namespace Nutcracker {
 		UploadUniformMat4(name, value);
 	}
 
+	void OpenGlShader::SetInt(const std::string& name, const int value)
+	{
+		UploadUniformInt(name, value);
+	}
+
 	const std::string & OpenGlShader::GetName() const
 	{
 		return m_Name;
