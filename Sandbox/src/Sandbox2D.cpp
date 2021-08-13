@@ -30,7 +30,7 @@ void Sandbox2D::OnUpdate(Nutcracker::Timestep ts)
 
 
 	Nutcracker::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	Nutcracker::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f,1.0f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+	Nutcracker::Renderer2D::DrawQuad({ 1.0f, 0.0f }, { 1.0f,1.0f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 	Nutcracker::Renderer2D::EndScene();
 	
 }
