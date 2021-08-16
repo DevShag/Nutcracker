@@ -6,6 +6,20 @@
 
 namespace Nutcracker {
 
+	Ref<Texture2D> Texture2D::Create(uint32_t width, uint32_t height)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None:
+			NC_CORE_ASSERT(false, "Renderer API::None is currently not supported by Nutcracker");
+			return nullptr;
+
+		case RendererAPI::API::OpenGL:
+			return CreateRef<OpenGLTexture2D>(width, height);
+		}
+	}
+
+
 	Ref<Texture2D> Texture2D::Create(const std::string & path)
 	{
 		switch (Renderer::GetAPI())

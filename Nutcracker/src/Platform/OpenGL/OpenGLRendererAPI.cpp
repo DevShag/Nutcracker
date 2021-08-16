@@ -32,6 +32,7 @@ namespace Nutcracker {
 	{
 		//Draw Call
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+		glBindTexture(GL_TEXTURE, 0);
 	}
 
 	
