@@ -22,5 +22,13 @@ private:
 	Nutcracker::Ref<Nutcracker::VertexArray> m_SquareVA;
 	Nutcracker::Ref<Nutcracker::Shader>m_FlatColorShader;
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.7f, 1.0f };
+
+	struct ProfileResult
+	{
+		const char* Name;
+		float Time;
+	};
+
+	std::vector<ProfileResult> m_ProfileResults;
 };
 
